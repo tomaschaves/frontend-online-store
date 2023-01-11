@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { getCategories } from '../services/api';
+import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
+import SearchHelper from './SearchHelper';
 
 class CategoriesList extends Component {
   state = {
     categories: [],
+    results: [],
   };
 
   componentDidMount() {
@@ -23,9 +25,17 @@ class CategoriesList extends Component {
   //   });
   // };
 
-  render() {
-    const { categories } = this.state;
+  handleClick = ({ target }) => {
+    getProductsFromCategoryAndQuery(target.id, '')
+      .then((results) => this.setState({
+        results,
+        // click: true, // ler comentário em ProductList.jsx
+      }));
+  };
 
+  render() {
+    const { categories, results } = this.state;
+    console.log(results);
     return (
       <div>
         <p>
@@ -35,11 +45,20 @@ class CategoriesList extends Component {
           {
             categories.map(({ id, name }) => (
               <label htmlFor={ id } key={ id } data-testid="category">
-                <input type="radio" id={ id } value={ id } name="category" />
+                <input
+                  type="radio"
+                  id={ id }
+                  value={ id }
+                  name="category"
+                  onClick={ this.handleClick }
+                />
                 { name }
               </label>
             ))
           }
+          <SearchHelper
+            list={ results.results }
+          />
         </aside>
       </div>
     );

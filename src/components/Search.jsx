@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getProductsFromCategoryAndQuery } from '../services/api';
-import ProductsList from './ProductsList';
+import SearchHelper from './SearchHelper';
 
 class Search extends Component {
   state = {
@@ -12,11 +12,10 @@ class Search extends Component {
   handleClick = (event) => {
     event.preventDefault();
     const { product } = this.state;
-    // console.log(product);
     getProductsFromCategoryAndQuery('', product)
       .then((results) => this.setState({
         results,
-        click: true,
+        click: true, // ler comentário em ProductList.jsx
       }));
   };
 
@@ -47,7 +46,7 @@ class Search extends Component {
             Pesquisar
           </button>
         </form>
-        <ProductsList
+        <SearchHelper
           list={ results.results }
           click={ click }
         />
