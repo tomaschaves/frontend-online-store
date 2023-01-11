@@ -46,6 +46,9 @@ class Search extends Component {
             Pesquisar
           </button>
         </form>
+        <p data-testid="home-initial-message">
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </p>
         <SearchHelper
           list={ results.results }
           click={ click }

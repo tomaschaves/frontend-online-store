@@ -35,7 +35,6 @@ class CategoriesList extends Component {
 
   render() {
     const { categories, results } = this.state;
-    console.log(results);
     return (
       <div>
         <p>
