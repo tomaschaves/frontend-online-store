@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class ProductDetails extends Component {
   render() {
-    const card = ({ location }) => {
-      const { title = 'defaultValue' } = location.state || {};
-      console.log(title);
-    };
-    card();
+    const { location: { state: { title, thumbnail, price } }, history } = this.props;
     return (
       <div>
         <h1 data-testid="product-detail-name">{title}</h1>
@@ -15,6 +12,7 @@ export default class ProductDetails extends Component {
         <button
           type="button"
           data-testid="shopping-cart-button"
+          onClick={ () => history.push('/cart') }
         >
           Carrinho
         </button>
@@ -23,3 +21,13 @@ export default class ProductDetails extends Component {
     );
   }
 }
+
+ProductDetails.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      title: PropTypes.string,
+      thumbnail: PropTypes.string,
+      price: PropTypes.string,
+    }),
+  }),
+}.isRequired;

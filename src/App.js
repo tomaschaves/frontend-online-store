@@ -20,8 +20,8 @@ class App extends Component {
               { ...props }
             />) }
           />
+          <Link to="/cart" data-testid="shopping-cart-button">Carrinho</Link>
         </Switch>
-        <Link to="/cart" data-testid="shopping-cart-button">Carrinho</Link>
         <Search />
         <CategoriesList />
       </BrowserRouter>

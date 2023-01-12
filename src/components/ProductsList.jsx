@@ -16,16 +16,13 @@ class ProductsList extends Component {
               <p>{ title }</p>
               <p>{ price }</p>
               <img src={ thumbnail } alt={ title } />
-              <Link to={ { pathname: `/${id}`, state: { title } } }> Detalhes</Link>
-              {/* <Link
-                to={ `/${id}` }
+              <Link
+                to={ { pathname: `/${id}`,
+                  state: { title, thumbnail, price, id } } }
                 data-testid="product-detail-link"
-                state={ {
-                  title: 'teste',
-                } }
               >
                 Detalhes
-              </Link> */}
+              </Link>
             </div>
           )) }
       </div>
