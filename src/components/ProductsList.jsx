@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
 
 class ProductsList extends Component {
@@ -65,9 +64,7 @@ class ProductsList extends Component {
     );
   }
 }
-
 ProductsList.propTypes = {
   list: PropTypes.string,
 }.isRequired;
-
 export default ProductsList;
