@@ -8,7 +8,7 @@ export default class ProductDetails extends Component {
   };
 
   saveProduct = () => {
-    const { location: { state: { title, thumbnail, price, id } } } = this.props;        //HDASHUJSADJIOHDSAFHSDAFOHSADHOFHOJASDFOHSAFOHGSAFOASFOGHASFOGFSAOGHASFOGOASFSADFNBISAFOHHGOFDSHOGSDAFOHDFASGFDAJFOFDSOUFSADOGHDSAFOUGDFSAUO
+    const { location: { state: { title, thumbnail, price, id } } } = this.props;
     const cartProducts = this.getSavedProducts(); // pegando do local storage os produtos com a função
     // se o id já existir, vamos aumentar o qtd, se não existir, vamos setar em 1 e aumentar a quantidade de produtos no carrinho
     const has = cartProducts.some((element) => element.id === id); // vemos se se já existe o produto no carrinho
@@ -33,7 +33,7 @@ export default class ProductDetails extends Component {
   };
 
   render() {
-    const { location: { state: { title, thumbnail, price, id } }, history } = this.props;                           // TIRAR O ID DAQUI
+    const { location: { state: { title, thumbnail, price } }, history } = this.props;
     return (
       <div>
         <h1 data-testid="product-detail-name">{title}</h1>
@@ -49,7 +49,7 @@ export default class ProductDetails extends Component {
         <button
           type="button"
           data-testid="product-detail-add-to-cart"
-          onClick={ this.saveProduct }                      // TIRAMOS OS ARGUMENTOS DAQUI, POIS ELES JÁ EXECUTAVAM A FUNÇÃO
+          onClick={ this.saveProduct }
         >
           Adicionar ao carrinho
         </button>
